@@ -3,7 +3,9 @@
         {
             "name": "Win32",
             "includePath": [
-                "${workspaceFolder}/**"
+                "${workspaceFolder}/**",
+                // 关键修改：让 VS Code 能够扫描到通过 CMake 自动生成的 UI 头文件 (如 ui_mainwindow.h)
+                "${workspaceFolder}/build/**"
             ],
             "defines": [
                 "_DEBUG",
@@ -14,6 +16,8 @@
             "compilerPath": "D:/mingw64/bin/g++.exe",
             "cStandard": "c17",
             "cppStandard": "c++17",
+            // 关键修改：将配置提供程序直接交给 CMake Tools 插件，让其自动同步 Qt 库的路径
+            "configurationProvider": "ms-vscode.cmake-tools",
             "intelliSenseMode": "windows-gcc-x64"
         }
     ],
