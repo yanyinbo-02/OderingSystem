@@ -21,8 +21,9 @@
                     "description": "为 gdb 启用整齐打印",
                     "text": "-enable-pretty-printing",
                     "ignoreFailures": true
-                },
+                }
             ],
+            "visualizerFile": "c:\\Users\\yan'yin'bo\\AppData\\Roaming\\Code\\User\\workspaceStorage\\3f3fa3f3a9ad95317d3eb310c4e6b6ee\\tonka3000.qtvsctools\\qt.natvis.xml"
         }
     ]
 }
