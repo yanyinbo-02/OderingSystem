@@ -1,0 +1,3 @@
+{
+    // 清空内部的 cmake.configureArgs，让 CMake 完全听从 CMakeLists.txt 的指挥
+}

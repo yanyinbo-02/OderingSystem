@@ -1,0 +1,50 @@
+[
+{
+  "directory": "D:/QtProject/OrderingSystem/build",
+  "command": "D:\\mingw64\\bin\\g++.exe -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB @CMakeFiles/QtVscodeProject.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles\\QtVscodeProject.dir\\QtVscodeProject_autogen\\mocs_compilation.cpp.obj -c D:\\QtProject\\OrderingSystem\\build\\QtVscodeProject_autogen\\mocs_compilation.cpp",
+  "file": "D:/QtProject/OrderingSystem/build/QtVscodeProject_autogen/mocs_compilation.cpp",
+  "output": "CMakeFiles/QtVscodeProject.dir/QtVscodeProject_autogen/mocs_compilation.cpp.obj"
+},
+{
+  "directory": "D:/QtProject/OrderingSystem/build",
+  "command": "D:\\mingw64\\bin\\g++.exe -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB @CMakeFiles/QtVscodeProject.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles\\QtVscodeProject.dir\\src\\main.cpp.obj -c D:\\QtProject\\OrderingSystem\\src\\main.cpp",
+  "file": "D:/QtProject/OrderingSystem/src/main.cpp",
+  "output": "CMakeFiles/QtVscodeProject.dir/src/main.cpp.obj"
+},
+{
+  "directory": "D:/QtProject/OrderingSystem/build",
+  "command": "D:\\mingw64\\bin\\g++.exe -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB @CMakeFiles/QtVscodeProject.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles\\QtVscodeProject.dir\\src\\views\\mainwindow.cpp.obj -c D:\\QtProject\\OrderingSystem\\src\\views\\mainwindow.cpp",
+  "file": "D:/QtProject/OrderingSystem/src/views/mainwindow.cpp",
+  "output": "CMakeFiles/QtVscodeProject.dir/src/views/mainwindow.cpp.obj"
+},
+{
+  "directory": "D:/QtProject/OrderingSystem/build",
+  "command": "D:\\mingw64\\bin\\g++.exe -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB @CMakeFiles/QtVscodeProject.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles\\QtVscodeProject.dir\\src\\controllers\\system_engine.cpp.obj -c D:\\QtProject\\OrderingSystem\\src\\controllers\\system_engine.cpp",
+  "file": "D:/QtProject/OrderingSystem/src/controllers/system_engine.cpp",
+  "output": "CMakeFiles/QtVscodeProject.dir/src/controllers/system_engine.cpp.obj"
+},
+{
+  "directory": "D:/QtProject/OrderingSystem/build",
+  "command": "D:\\mingw64\\bin\\g++.exe -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB @CMakeFiles/QtVscodeProject.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles\\QtVscodeProject.dir\\src\\models\\dish.cpp.obj -c D:\\QtProject\\OrderingSystem\\src\\models\\dish.cpp",
+  "file": "D:/QtProject/OrderingSystem/src/models/dish.cpp",
+  "output": "CMakeFiles/QtVscodeProject.dir/src/models/dish.cpp.obj"
+},
+{
+  "directory": "D:/QtProject/OrderingSystem/build",
+  "command": "D:\\mingw64\\bin\\g++.exe -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB @CMakeFiles/QtVscodeProject.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles\\QtVscodeProject.dir\\src\\models\\member.cpp.obj -c D:\\QtProject\\OrderingSystem\\src\\models\\member.cpp",
+  "file": "D:/QtProject/OrderingSystem/src/models/member.cpp",
+  "output": "CMakeFiles/QtVscodeProject.dir/src/models/member.cpp.obj"
+},
+{
+  "directory": "D:/QtProject/OrderingSystem/build",
+  "command": "D:\\mingw64\\bin\\g++.exe -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB @CMakeFiles/QtVscodeProject.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles\\QtVscodeProject.dir\\src\\models\\order.cpp.obj -c D:\\QtProject\\OrderingSystem\\src\\models\\order.cpp",
+  "file": "D:/QtProject/OrderingSystem/src/models/order.cpp",
+  "output": "CMakeFiles/QtVscodeProject.dir/src/models/order.cpp.obj"
+},
+{
+  "directory": "D:/QtProject/OrderingSystem/build",
+  "command": "D:\\mingw64\\bin\\g++.exe -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB @CMakeFiles/QtVscodeProject.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles\\QtVscodeProject.dir\\src\\models\\queue.cpp.obj -c D:\\QtProject\\OrderingSystem\\src\\models\\queue.cpp",
+  "file": "D:/QtProject/OrderingSystem/src/models/queue.cpp",
+  "output": "CMakeFiles/QtVscodeProject.dir/src/models/queue.cpp.obj"
+}
+]

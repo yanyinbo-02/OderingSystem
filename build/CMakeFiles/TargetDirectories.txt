@@ -1,0 +1,4 @@
+D:/QtProject/OrderingSystem/build/CMakeFiles/QtVscodeProject.dir
+D:/QtProject/OrderingSystem/build/CMakeFiles/edit_cache.dir
+D:/QtProject/OrderingSystem/build/CMakeFiles/rebuild_cache.dir
+D:/QtProject/OrderingSystem/build/CMakeFiles/QtVscodeProject_autogen.dir
