@@ -28,20 +28,27 @@ public:
     QWidget *centralwidget;
     QHBoxLayout *mainLayout;
     
-    // 导航
+    // 导航栏
     QListWidget *sidebarNav;
     QStackedWidget *stackedWidget;
 
-    // 页面1：点餐大厅
+    // 页面1：点餐大厅（升级为购物车联动模式）
     QWidget *pageMenu;
     QHBoxLayout *menuPageLayout;
+    QGroupBox *groupMenuTable;
+    QVBoxLayout *menuTableLayout;
     QTableWidget *tableWidgetMenu;
+    QPushButton *btnAddToCart;
+    
     QGroupBox *groupBilling;
     QVBoxLayout *billingLayout;
     QLineEdit *lineEditMemberId;
-    QPushButton *btnCalculatePrice;
-    QLabel *lblFinalPrice;
-    QPushButton *btnSubmitOrder;
+    QLabel *lblMemberLevel; // 自动化显示当前会员等级
+    QTableWidget *tableWidgetCart; // 购物车列表
+    QLabel *lblOriginalPrice; // 原价总额
+    QLabel *lblDiscountPrice; // 优惠金额
+    QLabel *lblFinalPrice; // 实付应付
+    QPushButton *btnSubmitOrder; // 付款并自动排队
 
     // 页面2：历史订单与评价
     QWidget *pageHistory;
@@ -74,7 +81,7 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
-        MainWindow->resize(950, 650);
+        MainWindow->resize(1100, 700);
         
         centralwidget = new QWidget(MainWindow);
         mainLayout = new QHBoxLayout(centralwidget);
@@ -93,40 +100,63 @@ public:
         // --- 右侧多页容器 ---
         stackedWidget = new QStackedWidget(centralwidget);
         
-        // ================= 页面1：点餐大厅 =================
+        // ================= 页面1：点餐大厅 (全新重构) =================
         pageMenu = new QWidget();
         menuPageLayout = new QHBoxLayout(pageMenu);
         
-        tableWidgetMenu = new QTableWidget(pageMenu);
+        // 左侧菜品区
+        groupMenuTable = new QGroupBox("电子菜单", pageMenu);
+        menuTableLayout = new QVBoxLayout(groupMenuTable);
+        tableWidgetMenu = new QTableWidget(groupMenuTable);
         tableWidgetMenu->setObjectName(QString::fromUtf8("tableWidgetMenu"));
         tableWidgetMenu->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
-        menuPageLayout->addWidget(tableWidgetMenu, 3);
-
-        groupBilling = new QGroupBox("会员结算中心", pageMenu);
-        billingLayout = new QVBoxLayout(groupBilling);
-        billingLayout->setSpacing(15);
+        menuTableLayout->addWidget(tableWidgetMenu);
         
-        billingLayout->addWidget(new QLabel("请输入会员卡号:"));
+        btnAddToCart = new QPushButton("➕ 将选中菜品加入购物车", groupMenuTable);
+        btnAddToCart->setObjectName(QString::fromUtf8("btnAddToCart"));
+        btnAddToCart->setStyleSheet("background-color: #4CAF50; color: white; font-weight: bold; height: 30px;");
+        menuTableLayout->addWidget(btnAddToCart);
+        menuPageLayout->addWidget(groupMenuTable, 4);
+
+        // 右侧购物车与结算中心
+        groupBilling = new QGroupBox("专属购物车 & 结算中心", pageMenu);
+        billingLayout = new QVBoxLayout(groupBilling);
+        billingLayout->setSpacing(10);
+        
+        billingLayout->addWidget(new QLabel("会员卡号 (输入后自动识别):"));
         lineEditMemberId = new QLineEdit(groupBilling);
         lineEditMemberId->setObjectName(QString::fromUtf8("lineEditMemberId"));
-        lineEditMemberId->setPlaceholderText("留空视作散客办理");
+        lineEditMemberId->setPlaceholderText("请输入卡号进行无感登录");
         billingLayout->addWidget(lineEditMemberId);
 
-        btnCalculatePrice = new QPushButton("计算消费价格", groupBilling);
-        btnCalculatePrice->setObjectName(QString::fromUtf8("btnCalculatePrice"));
-        billingLayout->addWidget(btnCalculatePrice);
+        lblMemberLevel = new QLabel("当前身份: 散客顾客 (无优惠)", groupBilling);
+        lblMemberLevel->setStyleSheet("color: #E65100; font-weight: bold;");
+        billingLayout->addWidget(lblMemberLevel);
 
-        lblFinalPrice = new QLabel("实际消费价格: ￥0.00", groupBilling);
-        lblFinalPrice->setStyleSheet("font-weight: bold; font-size: 14px; color: #2E7D32;");
+        billingLayout->addWidget(new QLabel("购物车明细 (双击某行可移出):"));
+        tableWidgetCart = new QTableWidget(groupBilling);
+        tableWidgetCart->setObjectName(QString::fromUtf8("tableWidgetCart"));
+        tableWidgetCart->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+        billingLayout->addWidget(tableWidgetCart);
+
+        // 价格计算拆解明细
+        lblOriginalPrice = new QLabel("商品原价总额: ￥0.00", groupBilling);
+        billingLayout->addWidget(lblOriginalPrice);
+
+        lblDiscountPrice = new QLabel("会员折扣减免: -￥0.00", groupBilling);
+        lblDiscountPrice->setStyleSheet("color: #D32F2F;");
+        billingLayout->addWidget(lblDiscountPrice);
+
+        lblFinalPrice = new QLabel("应付金额: ￥0.00", groupBilling);
+        lblFinalPrice->setStyleSheet("font-weight: bold; font-size: 16px; color: #2E7D32;");
         billingLayout->addWidget(lblFinalPrice);
 
-        btnSubmitOrder = new QPushButton("提交订单付款", groupBilling);
+        btnSubmitOrder = new QPushButton("💳 确认付款 (自动排队)", groupBilling);
         btnSubmitOrder->setObjectName(QString::fromUtf8("btnSubmitOrder"));
-        btnSubmitOrder->setStyleSheet("background-color: #1976D2; color: white; font-weight: bold; height: 35px;");
+        btnSubmitOrder->setStyleSheet("background-color: #1976D2; color: white; font-weight: bold; height: 40px; font-size: 14px;");
         billingLayout->addWidget(btnSubmitOrder);
-        billingLayout->addStretch();
         
-        menuPageLayout->addWidget(groupBilling, 1);
+        menuPageLayout->addWidget(groupBilling, 3);
         stackedWidget->addWidget(pageMenu);
 
         // ================= 页面2：历史与评价 =================
@@ -134,8 +164,7 @@ public:
         historyPageLayout = new QHBoxLayout(pageHistory);
         historySplitter = new QSplitter(Qt::Horizontal, pageHistory);
 
-        // 历史复制部分
-        groupHistory = new QGroupBox("点餐记忆 (双击或选中复制)");
+        groupHistory = new QGroupBox("点餐记忆 (历史消费)");
         historyLayout = new QVBoxLayout(groupHistory);
         listWidgetHistory = new QListWidget(groupHistory);
         listWidgetHistory->setObjectName(QString::fromUtf8("listWidgetHistory"));
@@ -145,7 +174,6 @@ public:
         historyLayout->addWidget(copyHistoryOrder);
         historySplitter->addWidget(groupHistory);
 
-        // 评价过滤展示
         groupComments = new QGroupBox("菜品评价看板");
         commentsLayout = new QVBoxLayout(groupComments);
         comboCommentSort = new QComboBox(groupComments);
@@ -210,7 +238,7 @@ public:
 
     void retranslateUi(QMainWindow *MainWindow)
     {
-        MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "智能点单管理系统 (MVC架构演示)", nullptr));
+        MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "高端智能多功能点单管理系统", nullptr));
     }
 };
 
