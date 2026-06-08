@@ -230,7 +230,7 @@ void MainWindow::on_comboCommentSort_currentIndexChanged(int index)
     ui->listWidgetComments->clear();
     QList<CommentModel> sortedComments = m_engine->getSortedComments(index);
     for (const auto &comment : sortedComments) {
-        QString stars = QString("★").repeat(comment.score) + QString("☆").repeat(5 - comment.score);
+        QString stars = QString("★").repeated(comment.score) + QString("☆").repeated(5 - comment.score);
         ui->listWidgetComments->addItem(QString("[%1] %2\n⏱ %3").arg(stars).arg(comment.content).arg(comment.time.toString("yyyy-MM-dd")));
     }
 }
