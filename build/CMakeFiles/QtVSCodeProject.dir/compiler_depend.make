@@ -4,6 +4,7 @@
 CMakeFiles/QtVscodeProject.dir/QtVscodeProject_autogen/mocs_compilation.cpp.obj: QtVscodeProject_autogen/mocs_compilation.cpp \
   D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/QDateTime \
   D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/QList \
+  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/QMap \
   D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/QObject \
   D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/QString \
   D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qabstractitemmodel.h \
@@ -522,6 +523,7 @@ CMakeFiles/QtVscodeProject.dir/src/controllers/system_engine.cpp.obj: D:/QtProje
 CMakeFiles/QtVscodeProject.dir/src/main.cpp.obj: D:/QtProject/OrderingSystem/src/main.cpp \
   D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/QDateTime \
   D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/QList \
+  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/QMap \
   D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/QObject \
   D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/QString \
   D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qabstractitemmodel.h \
@@ -1648,6 +1650,7 @@ CMakeFiles/QtVscodeProject.dir/src/models/queue.cpp.obj: D:/QtProject/OrderingSy
 CMakeFiles/QtVscodeProject.dir/src/views/mainwindow.cpp.obj: D:/QtProject/OrderingSystem/src/views/mainwindow.cpp \
   D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/QDateTime \
   D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/QList \
+  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/QMap \
   D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/QObject \
   D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/QString \
   D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/QVariant \
@@ -2011,6 +2014,12 @@ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qrect.h:
 
 D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/QList:
 
+D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qstringliteral.h:
+
+D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qhash.h:
+
+D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/QMap:
+
 D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qstring.h:
 
 D:/mingw64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/bits/exception.h:
@@ -2108,10 +2117,6 @@ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qcoreevent.h:
 D:/mingw64/x86_64-w64-mingw32/include/vadefs.h:
 
 D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qglobalstatic.h:
-
-D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qstringliteral.h:
-
-D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qhash.h:
 
 D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qsize.h:
 

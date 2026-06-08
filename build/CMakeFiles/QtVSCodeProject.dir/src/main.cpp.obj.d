@@ -291,6 +291,8 @@ CMakeFiles/QtVscodeProject.dir/src/main.cpp.obj: \
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/qstyle.h \
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/qtabbar.h \
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/qrubberband.h \
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/QMap \
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qmap.h \
  D:/QtProject/OrderingSystem/src/controllers/system_engine.h \
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/QObject \
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qobject.h \

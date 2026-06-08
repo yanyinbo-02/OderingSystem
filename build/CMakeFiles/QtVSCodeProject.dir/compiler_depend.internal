@@ -5,6 +5,7 @@ CMakeFiles/QtVscodeProject.dir/QtVscodeProject_autogen/mocs_compilation.cpp.obj
  D:/QtProject/OrderingSystem/build/QtVscodeProject_autogen/mocs_compilation.cpp
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/QDateTime
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/QList
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/QMap
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/QObject
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/QString
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qabstractitemmodel.h
@@ -525,6 +526,7 @@ CMakeFiles/QtVscodeProject.dir/src/main.cpp.obj
  D:/QtProject/OrderingSystem/src/main.cpp
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/QDateTime
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/QList
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/QMap
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/QObject
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/QString
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qabstractitemmodel.h
@@ -1656,6 +1658,7 @@ CMakeFiles/QtVscodeProject.dir/src/views/mainwindow.cpp.obj
  D:/QtProject/OrderingSystem/src/views/mainwindow.cpp
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/QDateTime
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/QList
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/QMap
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/QObject
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/QString
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/QVariant
