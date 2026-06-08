@@ -262,10 +262,40 @@ CMakeFiles/QtVscodeProject.dir/src/views/mainwindow.cpp.obj: \
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtGui/qkeysequence.h \
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/qtabwidget.h \
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtGui/qicon.h \
- D:/QtProject/OrderingSystem/build/QtVscodeProject_autogen/include/ui_mainwindow.h \
- D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/QVariant \
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/QTableWidgetItem \
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/qtablewidget.h \
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/qtableview.h \
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/qabstractitemview.h \
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/qabstractscrollarea.h \
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/qframe.h \
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qabstractitemmodel.h \
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qvariant.h \
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qmap.h \
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qitemselectionmodel.h \
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qset.h \
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/qabstractitemdelegate.h \
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/qstyleoption.h \
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qlocale.h \
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/qabstractspinbox.h \
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtGui/qvalidator.h \
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qregularexpression.h \
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/qslider.h \
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/qabstractslider.h \
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/qstyle.h \
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/qtabbar.h \
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/qrubberband.h \
+ D:/QtProject/OrderingSystem/src/controllers/system_engine.h \
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/QObject \
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qobject.h \
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/QString \
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qstring.h \
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/QList \
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qlist.h \
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/QDateTime \
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qdatetime.h \
+ D:/QtProject/OrderingSystem/src/views/ui_mainwindow.h \
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/QVariant \
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qvariant.h \
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/QApplication \
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/qapplication.h \
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qcoreapplication.h \
@@ -273,8 +303,6 @@ CMakeFiles/QtVscodeProject.dir/src/views/mainwindow.cpp.obj: \
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qeventloop.h \
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtGui/qguiapplication.h \
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtGui/qinputmethod.h \
- D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qlocale.h \
- D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qvariant.h \
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/QMainWindow \
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/QMenuBar \
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/qmenubar.h \
@@ -284,4 +312,24 @@ CMakeFiles/QtVscodeProject.dir/src/views/mainwindow.cpp.obj: \
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/QStatusBar \
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/qstatusbar.h \
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/QWidget \
- D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/qwidget.h
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/qwidget.h \
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/QTableWidget \
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/QListWidget \
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/qlistwidget.h \
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/qlistview.h \
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/QLineEdit \
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/qlineedit.h \
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtGui/qtextcursor.h \
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtGui/qtextformat.h \
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtGui/qpen.h \
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtGui/qtextoption.h \
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/QLabel \
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/qlabel.h \
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/QTabWidget \
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/qtabwidget.h \
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/QMessageBox \
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/qmessagebox.h \
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/qdialog.h \
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/QInputDialog \
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/qinputdialog.h \
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/qlineedit.h

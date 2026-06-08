@@ -3,6 +3,11 @@
 
 CMakeFiles/QtVscodeProject.dir/QtVscodeProject_autogen/mocs_compilation.cpp.obj
  D:/QtProject/OrderingSystem/build/QtVscodeProject_autogen/mocs_compilation.cpp
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/QDateTime
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/QList
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/QObject
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/QString
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qabstractitemmodel.h
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qalgorithms.h
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qarraydata.h
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qatomic.h
@@ -16,6 +21,7 @@ CMakeFiles/QtVscodeProject.dir/QtVscodeProject_autogen/mocs_compilation.cpp.obj
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qcontainerfwd.h
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qcontainertools_impl.h
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qdatastream.h
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qdatetime.h
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qflags.h
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qgenericatomic.h
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qglobal.h
@@ -23,10 +29,13 @@ CMakeFiles/QtVscodeProject.dir/QtVscodeProject_autogen/mocs_compilation.cpp.obj
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qhash.h
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qhashfunctions.h
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qiodevice.h
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qitemselectionmodel.h
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qiterator.h
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qline.h
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qlist.h
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qlocale.h
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qlogging.h
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qmap.h
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qmargins.h
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qmetatype.h
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qnamespace.h
@@ -41,7 +50,9 @@ CMakeFiles/QtVscodeProject.dir/QtVscodeProject_autogen/mocs_compilation.cpp.obj
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qrect.h
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qrefcount.h
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qregexp.h
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qregularexpression.h
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qscopedpointer.h
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qset.h
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qshareddata.h
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qsharedpointer.h
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qsharedpointer_impl.h
@@ -56,6 +67,7 @@ CMakeFiles/QtVscodeProject.dir/QtVscodeProject_autogen/mocs_compilation.cpp.obj
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qsystemdetection.h
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qtcore-config.h
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qtypeinfo.h
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qvariant.h
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qvarlengtharray.h
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qvector.h
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qversiontagging.h
@@ -81,15 +93,31 @@ CMakeFiles/QtVscodeProject.dir/QtVscodeProject_autogen/mocs_compilation.cpp.obj
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtGui/qtgui-config.h
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtGui/qtguiglobal.h
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtGui/qtransform.h
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtGui/qvalidator.h
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtGui/qwindowdefs.h
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtGui/qwindowdefs_win.h
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/QMainWindow
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/QTableWidgetItem
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/qabstractitemdelegate.h
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/qabstractitemview.h
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/qabstractscrollarea.h
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/qabstractslider.h
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/qabstractspinbox.h
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/qframe.h
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/qmainwindow.h
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/qrubberband.h
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/qsizepolicy.h
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/qslider.h
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/qstyle.h
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/qstyleoption.h
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/qtabbar.h
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/qtableview.h
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/qtablewidget.h
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/qtabwidget.h
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/qtwidgets-config.h
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/qtwidgetsglobal.h
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/qwidget.h
+ D:/QtProject/OrderingSystem/src/controllers/system_engine.h
  D:/QtProject/OrderingSystem/src/views/mainwindow.h
  D:/mingw64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/algorithm
  D:/mingw64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/atomic
@@ -265,6 +293,7 @@ CMakeFiles/QtVscodeProject.dir/QtVscodeProject_autogen/mocs_compilation.cpp.obj
  D:/mingw64/x86_64-w64-mingw32/include/time.h
  D:/mingw64/x86_64-w64-mingw32/include/vadefs.h
  D:/mingw64/x86_64-w64-mingw32/include/wchar.h
+ D:/QtProject/OrderingSystem/build/QtVscodeProject_autogen/METKDVI4SS/moc_system_engine.cpp
  D:/QtProject/OrderingSystem/build/QtVscodeProject_autogen/Z3L7HTGYLD/moc_mainwindow.cpp
 
 CMakeFiles/QtVscodeProject.dir/src/controllers/system_engine.cpp.obj
@@ -272,6 +301,11 @@ CMakeFiles/QtVscodeProject.dir/src/controllers/system_engine.cpp.obj
 
 CMakeFiles/QtVscodeProject.dir/src/main.cpp.obj
  D:/QtProject/OrderingSystem/src/main.cpp
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/QDateTime
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/QList
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/QObject
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/QString
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qabstractitemmodel.h
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qalgorithms.h
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qarraydata.h
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qatomic.h
@@ -287,6 +321,7 @@ CMakeFiles/QtVscodeProject.dir/src/main.cpp.obj
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qcoreapplication.h
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qcoreevent.h
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qdatastream.h
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qdatetime.h
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qeventloop.h
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qflags.h
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qgenericatomic.h
@@ -295,6 +330,7 @@ CMakeFiles/QtVscodeProject.dir/src/main.cpp.obj
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qhash.h
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qhashfunctions.h
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qiodevice.h
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qitemselectionmodel.h
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qiterator.h
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qline.h
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qlist.h
@@ -315,7 +351,9 @@ CMakeFiles/QtVscodeProject.dir/src/main.cpp.obj
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qrect.h
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qrefcount.h
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qregexp.h
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qregularexpression.h
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qscopedpointer.h
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qset.h
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qshareddata.h
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qsharedpointer.h
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qsharedpointer_impl.h
@@ -358,17 +396,33 @@ CMakeFiles/QtVscodeProject.dir/src/main.cpp.obj
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtGui/qtgui-config.h
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtGui/qtguiglobal.h
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtGui/qtransform.h
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtGui/qvalidator.h
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtGui/qwindowdefs.h
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtGui/qwindowdefs_win.h
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/QApplication
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/QMainWindow
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/QTableWidgetItem
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/qabstractitemdelegate.h
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/qabstractitemview.h
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/qabstractscrollarea.h
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/qabstractslider.h
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/qabstractspinbox.h
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/qapplication.h
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/qframe.h
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/qmainwindow.h
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/qrubberband.h
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/qsizepolicy.h
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/qslider.h
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/qstyle.h
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/qstyleoption.h
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/qtabbar.h
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/qtableview.h
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/qtablewidget.h
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/qtabwidget.h
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/qtwidgets-config.h
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/qtwidgetsglobal.h
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/qwidget.h
+ D:/QtProject/OrderingSystem/src/controllers/system_engine.h
  D:/QtProject/OrderingSystem/src/views/mainwindow.h
  D:/mingw64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/algorithm
  D:/mingw64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/atomic
@@ -559,7 +613,12 @@ CMakeFiles/QtVscodeProject.dir/src/models/queue.cpp.obj
 
 CMakeFiles/QtVscodeProject.dir/src/views/mainwindow.cpp.obj
  D:/QtProject/OrderingSystem/src/views/mainwindow.cpp
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/QDateTime
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/QList
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/QObject
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/QString
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/QVariant
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qabstractitemmodel.h
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qalgorithms.h
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qarraydata.h
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qatomic.h
@@ -575,6 +634,7 @@ CMakeFiles/QtVscodeProject.dir/src/views/mainwindow.cpp.obj
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qcoreapplication.h
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qcoreevent.h
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qdatastream.h
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qdatetime.h
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qeventloop.h
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qflags.h
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qgenericatomic.h
@@ -583,6 +643,7 @@ CMakeFiles/QtVscodeProject.dir/src/views/mainwindow.cpp.obj
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qhash.h
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qhashfunctions.h
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qiodevice.h
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qitemselectionmodel.h
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qiterator.h
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qline.h
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qlist.h
@@ -603,7 +664,9 @@ CMakeFiles/QtVscodeProject.dir/src/views/mainwindow.cpp.obj
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qrect.h
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qrefcount.h
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qregexp.h
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qregularexpression.h
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qscopedpointer.h
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qset.h
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qshareddata.h
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qsharedpointer.h
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qsharedpointer_impl.h
@@ -637,35 +700,69 @@ CMakeFiles/QtVscodeProject.dir/src/views/mainwindow.cpp.obj
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtGui/qpaintdevice.h
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtGui/qpainterpath.h
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtGui/qpalette.h
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtGui/qpen.h
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtGui/qpixelformat.h
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtGui/qpixmap.h
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtGui/qpolygon.h
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtGui/qregion.h
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtGui/qrgb.h
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtGui/qrgba64.h
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtGui/qtextcursor.h
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtGui/qtextformat.h
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtGui/qtextoption.h
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtGui/qtgui-config.h
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtGui/qtguiglobal.h
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtGui/qtransform.h
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtGui/qvalidator.h
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtGui/qwindowdefs.h
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtGui/qwindowdefs_win.h
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/QApplication
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/QInputDialog
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/QLabel
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/QLineEdit
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/QListWidget
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/QMainWindow
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/QMenuBar
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/QMessageBox
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/QStatusBar
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/QTabWidget
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/QTableWidget
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/QTableWidgetItem
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/QWidget
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/qabstractitemdelegate.h
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/qabstractitemview.h
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/qabstractscrollarea.h
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/qabstractslider.h
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/qabstractspinbox.h
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/qaction.h
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/qactiongroup.h
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/qapplication.h
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/qdialog.h
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/qframe.h
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/qinputdialog.h
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/qlabel.h
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/qlineedit.h
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/qlistview.h
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/qlistwidget.h
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/qmainwindow.h
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/qmenu.h
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/qmenubar.h
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/qmessagebox.h
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/qrubberband.h
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/qsizepolicy.h
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/qslider.h
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/qstatusbar.h
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/qstyle.h
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/qstyleoption.h
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/qtabbar.h
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/qtableview.h
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/qtablewidget.h
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/qtabwidget.h
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/qtwidgets-config.h
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/qtwidgetsglobal.h
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/qwidget.h
- D:/QtProject/OrderingSystem/build/QtVscodeProject_autogen/include/ui_mainwindow.h
+ D:/QtProject/OrderingSystem/src/controllers/system_engine.h
+ D:/QtProject/OrderingSystem/src/views/ui_mainwindow.h
  D:/mingw64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/algorithm
  D:/mingw64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/atomic
  D:/mingw64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/c++/backward/auto_ptr.h

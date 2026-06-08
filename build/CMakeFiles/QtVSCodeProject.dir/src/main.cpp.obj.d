@@ -271,4 +271,32 @@ CMakeFiles/QtVscodeProject.dir/src/main.cpp.obj: \
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/qsizepolicy.h \
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtGui/qkeysequence.h \
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/qtabwidget.h \
- D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtGui/qicon.h
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtGui/qicon.h \
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/QTableWidgetItem \
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/qtablewidget.h \
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/qtableview.h \
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/qabstractitemview.h \
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/qabstractscrollarea.h \
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/qframe.h \
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qabstractitemmodel.h \
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qitemselectionmodel.h \
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qset.h \
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/qabstractitemdelegate.h \
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/qstyleoption.h \
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/qabstractspinbox.h \
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtGui/qvalidator.h \
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qregularexpression.h \
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/qslider.h \
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/qabstractslider.h \
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/qstyle.h \
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/qtabbar.h \
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtWidgets/qrubberband.h \
+ D:/QtProject/OrderingSystem/src/controllers/system_engine.h \
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/QObject \
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qobject.h \
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/QString \
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qstring.h \
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/QList \
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qlist.h \
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/QDateTime \
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qdatetime.h
