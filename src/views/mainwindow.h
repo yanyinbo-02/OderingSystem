@@ -38,7 +38,7 @@ private slots:
 
     // 评价检索与排序
     void on_comboCommentSort_currentIndexChanged(int index);
-
+    
     // 历史克隆重现
     void on_copyHistoryOrder_clicked();
 
