@@ -26,11 +26,11 @@
 	[
 		{
 			"backtrace" : 0,
-			"id" : "Qt5::Core::@6890427a1f51a3e7e1df"
+			"id" : "Qt5::moc::@6890427a1f51a3e7e1df"
 		},
 		{
 			"backtrace" : 0,
-			"id" : "Qt5::moc::@6890427a1f51a3e7e1df"
+			"id" : "Qt5::Core::@6890427a1f51a3e7e1df"
 		},
 		{
 			"backtrace" : 0,
@@ -38,11 +38,11 @@
 		},
 		{
 			"backtrace" : 0,
-			"id" : "Qt5::Widgets::@6890427a1f51a3e7e1df"
+			"id" : "Qt5::uic::@6890427a1f51a3e7e1df"
 		},
 		{
 			"backtrace" : 0,
-			"id" : "Qt5::uic::@6890427a1f51a3e7e1df"
+			"id" : "Qt5::Widgets::@6890427a1f51a3e7e1df"
 		}
 	],
 	"paths" : 
