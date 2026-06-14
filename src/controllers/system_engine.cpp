@@ -41,14 +41,34 @@ double SystemEngine::calculatePrice(const QString &dishName, const QString &memb
 }
 
 //订单创建函数，传入菜品名称与会员号
-bool SystemEngine::createOrder(const QString &dishName, const QString &memberId) {
-    //首先计算实际消费金额
-    double finalPrice = calculatePrice(dishName, memberId);
-    //将菜品写入订单管理器的订单列表中
-    OrderManager::instance().addOrder(dishName);
-    // 积分累加
-    MemberManager::instance().addPoints(memberId, finalPrice);
-    //向外部广播“菜单/购物车数据改变”信号
+bool SystemEngine::createGroupedOrder(const QMap<QString, int> &cart, const QString &memberId) {
+    if (cart.isEmpty()) return false;
+
+    QList<OrderItem> orderItems;
+    QStringList summaryParts;
+    double totalOrderFinalPrice = 0.0;
+
+    // 遍历整个购物车缓冲区
+    for (auto it = cart.constBegin(); it != cart.constEnd(); ++it) {
+        OrderItem item;
+        item.dishName = it.key();
+        item.count = it.value();
+        orderItems.append(item);
+
+        // 拼接摘要字符串
+        summaryParts.append(QString("%1(x%2)").arg(item.dishName).arg(item.count));
+
+        // 计算折后单价并累加到总额，以便进行积分计算
+        double singleFinalPrice = calculatePrice(item.dishName, memberId);
+        totalOrderFinalPrice += (singleFinalPrice * item.count);
+    }
+
+    // 1. 底层模型归档
+    OrderManager::instance().addGroupedOrder(orderItems, summaryParts.join(", "));
+    
+    // 2. 会员全单积分动态累加
+    MemberManager::instance().addPoints(memberId, totalOrderFinalPrice);
+
     emit menuDataChanged();
     return true;
 }
@@ -81,18 +101,6 @@ QList<CommentModel> SystemEngine::getSortedComments(int index) {
 //得到历史记录
 QList<OrderModel> SystemEngine::getHistoryOrders() {
     return OrderManager::instance().getOrders();
-}
-
-//实现历史订单复用功能
-bool SystemEngine::duplicateOrderFromHistory(const QString &itemText) {
-    //界面会把用户点击的那一行文本直接丢过来。
-    //订单管理器内部会通过正则表达式提取出菜品名称并自动重新下单
-    bool success = OrderManager::instance().duplicateFromText(itemText);
-    if (success) {
-        //发送变动信号
-        emit menuDataChanged();
-    }
-    return success;
 }
 
 //获取队列信息

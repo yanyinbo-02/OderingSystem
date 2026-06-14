@@ -6,6 +6,7 @@
 #include <QString>
 #include <QList>
 #include <QDateTime>
+#include <QMap>
 
 //这些数据载体在各层之间流转，保证解耦
 struct DishModel {
