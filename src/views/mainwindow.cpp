@@ -195,30 +195,24 @@ void MainWindow::on_btnSubmitOrder_clicked()
     QString mid = ui->lineEditMemberId->text().trimmed();
     QString queueIdentity = mid.isEmpty() ? QString("客流水-%1").arg(qrand() % 900 + 100) : mid;
 
-    // 1. 批量向底层模型写入真实多菜品账单
-    QMap<QString, int>::const_iterator it = m_cart.constBegin();
-    while (it != m_cart.constEnd()) {
-        for (int i = 0; i < it.value(); ++i) {
-            m_engine->createOrder(it.key(), mid);
-        }
-        it++;
-    }
+    // 【升级点一】直接一键把整个购物车输入底层，封装生成单ID捆绑订单
+    m_engine->createGroupedOrder(m_cart, mid);
 
-    // 2. 自动化连锁机制：触发自动排队业务
+    // 自动化连锁机制：触发自动排队业务
     int defaultQueueTab = 1; // 默认加入“现场取餐进程”
     m_engine->customerJoinQueue(queueIdentity, defaultQueueTab);
 
     QMessageBox::information(this, "结账并完成排队", 
         QString("付款交易成功！\n系统检测到您的出餐类型，已为您分配至【现场取餐】队列。\n识别号：%1").arg(queueIdentity));
 
-    // 3. 清洗本地购物车缓冲区并强制刷新
+    // 清洗本地购物车缓冲区并强制更新
     m_cart.clear();
     recalculateCartPrices();
     loadHistoryOrders();
 
-    // 4. 路由切票：自动引导切换至排队界面
+    // 路由切票：自动引导切换至排队界面看板
     ui->tabWidgetQueueType->setCurrentIndex(defaultQueueTab);
-    ui->sidebarNav->setCurrentRow(2); // 选中“排队看板”
+    ui->sidebarNav->setCurrentRow(2); // 选中“排队看板”页面
 }
 
 // =========================================================================
@@ -240,18 +234,42 @@ void MainWindow::loadHistoryOrders()
     ui->listWidgetHistory->clear();
     QList<OrderModel> history = m_engine->getHistoryOrders();
     for (const auto &order : history) {
-        ui->listWidgetHistory->addItem(QString("订单:%1 | 菜品: %2").arg(order.orderId).arg(order.dishName));
+        // 精致显示：订单号加聚合的内容列表
+        ui->listWidgetHistory->addItem(QString("【订单号:%1】 🧾 包含明细: %2")
+                                       .arg(order.orderId)
+                                       .arg(order.summary));
     }
 }
 
 void MainWindow::on_copyHistoryOrder_clicked()
 {
-    QListWidgetItem *selectedItem = ui->listWidgetHistory->currentItem();
-    if (!selectedItem) return;
-    if (m_engine->duplicateOrderFromHistory(selectedItem->text())) {
-        QMessageBox::information(this, "同步成功", "历史轨迹对应菜品已逆向克隆出新订单。");
-        loadHistoryOrders();
+    int currentRow = ui->listWidgetHistory->currentRow();
+    if (currentRow < 0) {
+        QMessageBox::warning(this, "复制失败", "请先在左侧历史消费网格中点击选择一条打包订单记录。");
+        return;
     }
+
+    QList<OrderModel> history = m_engine->getHistoryOrders();
+    if (currentRow >= history.size()) return;
+
+    // 获取选中的那组历史大单
+    const OrderModel &selectedOrder = history[currentRow];
+
+    // 【核心改进】不再盲目追加历史记录本身，而是遍历该历史打包单内的每一个子菜品，完美注入当前购物车
+    for (const auto &item : selectedOrder.items) {
+        m_cart[item.dishName] = m_cart.value(item.dishName, 0) + item.count;
+    }
+
+    // 强制驱动UI刷新，购物车列表重排、计算折后优惠价和总和
+    recalculateCartPrices();
+
+    QMessageBox::information(this, "智能轨迹复原", 
+        QString("成功克隆订单 [%1]！\n所含菜品已全部一键同步回滚至您的专属购物车中。\n系统已为您无感切回点餐大厅！")
+        .arg(selectedOrder.orderId));
+
+    // 【核心改进】自动跳入菜单界面，方便用户继续加菜或直接结账
+    ui->sidebarNav->setCurrentRow(0);     // 切换左侧导航至：🛒 点餐大厅
+    ui->stackedWidget->setCurrentIndex(0); // 联动的右侧页面切回点餐主画布
 }
 
 void MainWindow::refreshQueueUI()
