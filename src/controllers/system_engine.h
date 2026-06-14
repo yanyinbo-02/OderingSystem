@@ -22,10 +22,16 @@ struct CommentModel {
     QDateTime time;   //评价发表时间
 }; //评论模型
 
+struct OrderItem {
+    QString dishName;
+    int count;
+}; //单个订单内菜品明细结构
+
 struct OrderModel {
     QString orderId;  //自动生成的订单号
-    QString dishName; //购买的菜品名称
-}; //点单模型
+    QList<OrderItem> items; // 包含的多菜品明细
+    QString summary;
+}; //（打包）点单模型
 
 struct QueueNode {
     QString id;  //排队识别号（会员号或流水号）
@@ -43,10 +49,9 @@ public:
     // 暴露给 UI (MainWindow) 调用的纯虚/普通函数
     QList<DishModel> getAllDishes();  //菜单获取
     double calculatePrice(const QString &dishName, const QString &memberId);  //价格计算
-    bool createOrder(const QString &dishName, const QString &memberId); //订单创建
+    bool createGroupedOrder(const QMap<QString, int> &cart, const QString &memberId); //批量提交购物车下单接口
     QList<CommentModel> getSortedComments(int index); //评价排序
     QList<OrderModel> getHistoryOrders(); //获取历史订单
-    bool duplicateOrderFromHistory(const QString &itemText); //历史订单复用
     QList<QueueNode> getQueueData(int type);  //获取排队信息
     void customerJoinQueue(const QString &id, int type);  //加入排队
     void callNextCustomer(int type);  //传唤客户
