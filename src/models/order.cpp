@@ -3,10 +3,16 @@
 #include <QRegularExpression>
 
 OrderManager::OrderManager() : m_orderIdCounter(1001) {
-    // 预置固定的历史消费记录，假装过往有丰富的购买数据
-    addOrder("招牌红烧肉");
-    addOrder("经典波霸奶茶");
-    addOrder("宫保鸡丁");
+    // 预置复合型的历史大单消费记录，假装过往有丰富的真实购买打包数据
+    QList<OrderItem> sampleItems1;
+    sampleItems1.append({"招牌红烧肉", 1});
+    sampleItems1.append({"经典波霸奶茶", 2});
+    addGroupedOrder(sampleItems1, "招牌红烧肉(x1), 经典波霸奶茶(x2)");
+
+    QList<OrderItem> sampleItems2;
+    sampleItems2.append({"宫保鸡丁", 1});
+    sampleItems2.append({"抹茶冰淇淋", 1});
+    addGroupedOrder(sampleItems2, "宫保鸡丁(x1), 抹茶冰淇淋(x1)");
 }
 
 OrderManager& OrderManager::instance() {
@@ -14,24 +20,11 @@ OrderManager& OrderManager::instance() {
     return inst;
 }
 
-void OrderManager::addOrder(const QString &dishName) {
-    m_orders.append({QString::number(m_orderIdCounter++), dishName});
+void OrderManager::addGroupedOrder(const QList<OrderItem> &items, const QString &summary) {
+    m_orders.append({QString::number(m_orderIdCounter++), items, summary});
 }
 
 QList<OrderModel> OrderManager::getOrders() {
     return m_orders;
 }
 
-bool OrderManager::duplicateFromText(const QString &itemText) {
-    // 历史组件传递的标准文本格式为："订单号: 1001 | 菜品: 招牌红烧肉"
-    // 利用非贪婪匹配正则表达式精准拉取菜品字段
-    QRegularExpression re("菜品:\\s*(.*)");
-    QRegularExpressionMatch match = re.match(itemText);
-    
-    if (match.hasMatch()) {
-        QString extractedDishName = match.captured(1).trimmed();
-        addOrder(extractedDishName); // 快捷复制下单成功
-        return true;
-    }
-    return false;
-}

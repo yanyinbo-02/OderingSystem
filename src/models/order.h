@@ -13,12 +13,12 @@ public:
 
     // 增加新订单
     void addOrder(const QString &dishName);
+
+    //打包订单录入接口
+    void addGroupedOrder(const QList<OrderItem> &items, const QString &summary);
     
     // 获取历史订单列表
     QList<OrderModel> getOrders();
-    
-    // 从界面提取的文本中反向克隆创建订单
-    bool duplicateFromText(const QString &itemText);
 
 private:
     OrderManager();
