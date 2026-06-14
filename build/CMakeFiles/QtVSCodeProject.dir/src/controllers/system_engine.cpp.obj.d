@@ -219,6 +219,8 @@ CMakeFiles/QtVscodeProject.dir/src/controllers/system_engine.cpp.obj: \
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qdatetime.h \
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qshareddata.h \
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qhash.h \
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/QMap \
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qmap.h \
  D:/QtProject/OrderingSystem/src/models/dish.h \
  D:/QtProject/OrderingSystem/src/controllers/system_engine.h \
  D:/QtProject/OrderingSystem/src/models/member.h \

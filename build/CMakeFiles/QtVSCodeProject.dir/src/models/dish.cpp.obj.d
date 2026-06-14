@@ -219,4 +219,6 @@ CMakeFiles/QtVscodeProject.dir/src/models/dish.cpp.obj: \
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/QDateTime \
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qdatetime.h \
  D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qshareddata.h \
- D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qhash.h
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qhash.h \
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/QMap \
+ D:/Qt/Qt5.14.2/5.14.2/mingw73_64/include/QtCore/qmap.h
