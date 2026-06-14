@@ -1,8 +1,8 @@
 //会员模型
 #include "member.h"
 
-MemberManager::MemberManager() : m_points(150) {
-    // 初始赋予 150 积分（处于黄金会员级别），方便界面渲染观察
+MemberManager::MemberManager() : m_points(0) {
+// 可以让系统在刚启动时就拥有一个“黄金会员”作为测试样本，便于前端界面直接观察到折扣效果
 }
 
 MemberManager& MemberManager::instance() {
