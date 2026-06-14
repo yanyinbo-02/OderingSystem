@@ -1,4 +1,3 @@
-我来先了解一下这个仓库的具体情况，再为其撰写README。让我获取仓库的目录结构和源代码文件：现在我获取具体的源代码文件结构来了解更多细节。现在我已掌握了项目的全面信息。为该仓库撰写一份专业、完整的 README：
 
 ```markdown name=README.md url=https://github.com/yanyinbo-02/OderingSystem/blob/main/README.md
 # OrderingSystem — 高端智能多功能点单管理系统
