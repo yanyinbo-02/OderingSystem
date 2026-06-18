@@ -12,7 +12,8 @@
         "tuple": "cpp",
         "type_traits": "cpp",
         "utility": "cpp",
-        "string": "cpp"
+        "string": "cpp",
+        "qheaderview": "cpp"
     }
     // 清空内部的 cmake.configureArgs，让 CMake 完全听从 CMakeLists.txt 的指挥
 }
