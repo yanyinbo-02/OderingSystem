@@ -20,6 +20,11 @@ OrderManager& OrderManager::instance() {
     return inst;
 }
 
+
+//QString::number(m_orderIdCounter++) 巧妙利用了后缀自增运算符。
+//其工作原理是：先取出当前计数器的整数值（例如第一次为 1001），
+//通过 QString::number() 转换为文本类型作为当前订单的唯一识别号（Order ID）；
+//紧接着将计数器累加 1（变为 1002），为下一个订单的生成做准备。
 void OrderManager::addGroupedOrder(const QList<OrderItem> &items, const QString &summary) {
     m_orders.append({QString::number(m_orderIdCounter++), items, summary});
 }

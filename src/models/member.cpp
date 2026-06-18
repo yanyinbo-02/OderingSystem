@@ -2,9 +2,9 @@
 #include "member.h"
 
 MemberManager::MemberManager() : m_points(0) {
-// 可以让系统在刚启动时就拥有一个“黄金会员”作为测试样本，便于前端界面直接观察到折扣效果
 }
 
+//同样以局部静态变量的形式提供单例实例，保证全系统所有扣款计算和积分变动操作的都是同一套会员状态数据
 MemberManager& MemberManager::instance() {
     static MemberManager inst;
     return inst;
@@ -14,7 +14,7 @@ double MemberManager::getDiscount(const QString &memberId) {
     if (memberId.isEmpty()) {
         return 1.0; // 非会员不享受折扣
     }
-
+//会员等级折扣动态折算机制
     // 根据积分区间映射不同的阶梯式优惠折扣
     if (m_points <= 100) {
         return 0.95; // 普通会员：95折
