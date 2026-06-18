@@ -118,26 +118,40 @@ void MainWindow::on_tableWidgetCart_cellDoubleClicked(int row, int column)
 }
 
 // 登录后自动动态切换并更新当前会员级别显示
+/* src/views/mainwindow.cpp */
+
+// 登录后自动动态切换并更新当前会员级别显示（重写后的高性能高可读版本）
 void MainWindow::on_lineEditMemberId_textChanged(const QString &text)
 {
     QString mid = text.trimmed();
+
+    // 1. 遵循 MVC 原则，直接向控制层索要统一格式的会员状态数据
+    MemberInfoModel member = m_engine->getMemberInfo(mid);
+
+    // 2. 根据业务状态进行纯粹的界面渲染（消除黑盒盲测与无效死代码）
     if (mid.isEmpty()) {
         ui->lblMemberLevel->setText("当前身份: 散客顾客 (无优惠)");
         ui->lblMemberLevel->setStyleSheet("color: #E65100; font-weight: bold;");
     } else {
-        // 利用边界测试菜品逆向探测或直接映射控制器分层
-        // 这里基于后台返回的折扣率反推等级名称，实现极致的高内聚显示
-        double testPrice = m_engine->calculatePrice("特色牛排", mid);
-        if (testPrice < 20.0 && testPrice > 0) { 
-            // 假设原价40，根据折扣判定等级
-            ui->lblMemberLevel->setText("验证成功：钻石VIP会员 (享有最高等级尊贵特权)");
-            ui->lblMemberLevel->setStyleSheet("color: #7B1FA2; font-weight: bold;");
+        // 动态展示真实的等级、更精确的分位折扣和积分状态
+        QString statusText = QString("验证成功：%1 (享有 %2 折优惠 | 当前积分: %3)")
+                             .arg(member.levelName)
+                             .arg(member.discount * 10, 0, 'f', 1) // 转换为例如 "8.5" 折
+                             .arg(member.points);
+        ui->lblMemberLevel->setText(statusText);
+
+        // 3. 动态样式驱动：根据具体的等级渲染对应的视觉主题（消除魔法硬编码）
+        if (member.levelName == "钻石VIP会员") {
+            ui->lblMemberLevel->setStyleSheet("color: #7B1FA2; font-weight: bold;"); // 尊贵紫
+        } else if (member.levelName == "黄金会员") {
+            ui->lblMemberLevel->setStyleSheet("color: #F57C00; font-weight: bold;"); // 黄金橙
         } else {
-            ui->lblMemberLevel->setText(QString("验证成功：常规注册会员 (卡号:%1)").arg(mid));
-            ui->lblMemberLevel->setStyleSheet("color: #1976D2; font-weight: bold;");
+            ui->lblMemberLevel->setStyleSheet("color: #1976D2; font-weight: bold;"); // 注册蓝
         }
     }
-    recalculateCartPrices(); // 重新计算因为卡号变更引起的总价波动
+
+    // 4. 强制驱动购物车级联更新（用户输入卡号时，购物车内的“折后单品小计”及“总应付金额”将实时无感刷新）
+    recalculateCartPrices(); 
 }
 
 double MainWindow::getBasePriceOfDish(const QString &dishName)

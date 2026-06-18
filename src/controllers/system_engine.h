@@ -9,6 +9,11 @@
 #include <QMap>
 
 //这些数据载体在各层之间流转，保证解耦
+struct MemberInfoModel {
+    QString levelName;  // 等级名称（如：普通会员、黄金会员、钻石VIP会员）
+    double discount;    // 折扣率（如：0.95、0.90、0.85）
+    int points;         // 当前会员积分
+};
 struct DishModel {
     QString name;  //菜品名称
     QString category;  //菜品分类
@@ -56,6 +61,7 @@ public:
     QList<QueueNode> getQueueData(int type);  //获取排队信息
     void customerJoinQueue(const QString &id, int type);  //加入排队
     void callNextCustomer(int type);  //传唤客户
+    MemberInfoModel getMemberInfo(const QString &memberId);
 
     //signals:：定义了引擎对外广播的事件
 signals:

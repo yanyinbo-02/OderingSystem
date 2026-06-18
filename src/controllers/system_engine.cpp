@@ -124,6 +124,31 @@ QList<CommentModel> SystemEngine::getSortedComments(int index) {
     return comments;
 }
 
+MemberInfoModel SystemEngine::getMemberInfo(const QString &memberId) {
+    MemberInfoModel info;
+    if (memberId.isEmpty()) {
+        info.levelName = "散客顾客";
+        info.discount = 1.0;
+        info.points = 0;
+        return info;
+    }
+
+    // 调用底层单例获取真实的积分与折扣，保证业务逻辑的高内聚
+    info.points = MemberManager::instance().getPoints();
+    info.discount = MemberManager::instance().getDiscount(memberId);
+
+    // 严格对齐底层的阶梯式优惠折扣规则进行文本映射
+    if (info.points <= 100) {
+        info.levelName = "普通会员";
+    } else if (info.points <= 500) {
+        info.levelName = "黄金会员";
+    } else {
+        info.levelName = "钻石VIP会员";
+    }
+
+    return info;
+}
+
 //得到历史记录
 QList<OrderModel> SystemEngine::getHistoryOrders() {
     return OrderManager::instance().getOrders();
