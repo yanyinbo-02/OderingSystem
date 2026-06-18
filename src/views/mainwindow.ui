@@ -6,39 +6,284 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>839</width>
+    <height>647</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>高端智能多功能点单管理系统</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QPushButton" name="pushButton">
-    <property name="geometry">
-     <rect>
-      <x>284</x>
-      <y>200</y>
-      <width>81</width>
-      <height>41</height>
-     </rect>
+   <layout class="QHBoxLayout" name="mainLayout">
+    <property name="spacing">
+     <number>10</number>
     </property>
-    <property name="text">
-     <string>PushButton</string>
+    <property name="leftMargin">
+     <number>10</number>
     </property>
-   </widget>
+    <property name="topMargin">
+     <number>10</number>
+    </property>
+    <property name="rightMargin">
+     <number>10</number>
+    </property>
+    <property name="bottomMargin">
+     <number>10</number>
+    </property>
+    <item>
+     <widget class="QListWidget" name="sidebarNav">
+      <property name="maximumSize">
+       <size>
+        <width>180</width>
+        <height>16777215</height>
+       </size>
+      </property>
+      <item>
+       <property name="text">
+        <string>🛒 点餐大厅</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>📜 历史与评价</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>👥 排队看板</string>
+       </property>
+      </item>
+     </widget>
+    </item>
+    <item>
+     <widget class="QStackedWidget" name="stackedWidget">
+      <widget class="QWidget" name="pageMenu">
+       <layout class="QHBoxLayout" name="menuPageLayout">
+        <item>
+         <widget class="QGroupBox" name="groupMenuTable">
+          <property name="title">
+           <string>电子菜单</string>
+          </property>
+          <layout class="QVBoxLayout" name="menuTableLayout">
+           <item>
+            <widget class="QTableWidget" name="tableWidgetMenu"/>
+           </item>
+           <item>
+            <widget class="QPushButton" name="btnAddToCart">
+             <property name="styleSheet">
+              <string>background-color: #4CAF50; color: white; font-weight: bold; height: 30px;</string>
+             </property>
+             <property name="text">
+              <string>➕ 将选中菜品加入购物车</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item>
+         <widget class="QGroupBox" name="groupBilling">
+          <property name="title">
+           <string>专属购物车 &amp; 结算中心</string>
+          </property>
+          <layout class="QVBoxLayout" name="billingLayout">
+           <property name="spacing">
+            <number>10</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="labelMemberIdPrompt">
+             <property name="text">
+              <string>会员卡号 (输入后自动识别):</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="lineEditMemberId">
+             <property name="placeholderText">
+              <string>请输入卡号进行无感登录</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="lblMemberLevel">
+             <property name="styleSheet">
+              <string>color: #E65100; font-weight: bold;</string>
+             </property>
+             <property name="text">
+              <string>当前身份: 散客顾客 (无优惠)</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="labelCartPrompt">
+             <property name="text">
+              <string>购物车明细 (双击某行可移出):</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QTableWidget" name="tableWidgetCart"/>
+           </item>
+           <item>
+            <widget class="QLabel" name="lblOriginalPrice">
+             <property name="text">
+              <string>商品原价总额: ￥0.00</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="lblDiscountPrice">
+             <property name="styleSheet">
+              <string>color: #D32F2F;</string>
+             </property>
+             <property name="text">
+              <string>会员折扣减免: -￥0.00</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="lblFinalPrice">
+             <property name="styleSheet">
+              <string>font-weight: bold; font-size: 16px; color: #2E7D32;</string>
+             </property>
+             <property name="text">
+              <string>应付金额: ￥0.00</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="btnSubmitOrder">
+             <property name="styleSheet">
+              <string>background-color: #1976D2; color: white; font-weight: bold; height: 40px; font-size: 14px;</string>
+             </property>
+             <property name="text">
+              <string>💳 确认付款 (自动排队)</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="pageHistory">
+       <layout class="QHBoxLayout" name="historyPageLayout">
+        <item>
+         <widget class="QSplitter" name="historySplitter">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <widget class="QGroupBox" name="groupHistory">
+           <property name="title">
+            <string>点餐记忆 (历史消费)</string>
+           </property>
+           <layout class="QVBoxLayout" name="historyLayout">
+            <item>
+             <widget class="QListWidget" name="listWidgetHistory"/>
+            </item>
+            <item>
+             <widget class="QPushButton" name="copyHistoryOrder">
+              <property name="text">
+               <string>🔄 复制该订单再来一单</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+          <widget class="QGroupBox" name="groupComments">
+           <property name="title">
+            <string>菜品评价看板</string>
+           </property>
+           <layout class="QVBoxLayout" name="commentsLayout">
+            <item>
+             <widget class="QComboBox" name="comboCommentSort"/>
+            </item>
+            <item>
+             <widget class="QListWidget" name="listWidgetComments"/>
+            </item>
+           </layout>
+          </widget>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="pageQueue">
+       <layout class="QVBoxLayout" name="queuePageLayout">
+        <item>
+         <layout class="QHBoxLayout" name="queueTopLayout">
+          <item>
+           <widget class="QLabel" name="lblQueueCount">
+            <property name="styleSheet">
+             <string>font-size: 14px; font-weight: bold;</string>
+            </property>
+            <property name="text">
+             <string>当前排队总数: 0 人</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="spacerQueueTop">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btnRefreshQueue">
+            <property name="text">
+             <string>🔄 刷新排队进度</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <widget class="QTabWidget" name="tabWidgetQueueType">
+          <widget class="QWidget" name="tabReserve">
+           <attribute name="title">
+            <string>预约排队进程</string>
+           </attribute>
+          </widget>
+          <widget class="QWidget" name="tabPickup">
+           <attribute name="title">
+            <string>现场取餐进程</string>
+           </attribute>
+          </widget>
+         </widget>
+        </item>
+        <item>
+         <widget class="QTableWidget" name="tableWidgetQueue"/>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="queueBottomLayout">
+          <item>
+           <widget class="QPushButton" name="btnJoinQueue">
+            <property name="text">
+             <string>➕ 申请排队入队</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btnCallNext">
+            <property name="text">
+             <string>🔔 商家叫号出队</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </item>
+   </layout>
   </widget>
-  <widget class="QMenuBar" name="menubar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>800</width>
-     <height>22</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources/>
  <connections/>
