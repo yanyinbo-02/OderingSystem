@@ -20,12 +20,15 @@
 #include <QtWidgets/QSplitter>
 #include <QtWidgets/QHeaderView>
 
+
+//为了防止第三方库命名空间污染而定义的宏
 QT_BEGIN_NAMESPACE
 
+//声明了一个名为 Ui_MainWindow 的类，这个类是一个纯粹的界面描述类，用于承载所有 UI 控件的指针
 class Ui_MainWindow
 {
 public:
-    QWidget *centralwidget;
+    QWidget *centralwidget; //是主窗口的中心部件，所有拉入窗口的控件都必须作为它的子对象
     QHBoxLayout *mainLayout;
     
     // 导航栏
