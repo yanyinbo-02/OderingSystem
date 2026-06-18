@@ -1,6 +1,6 @@
 /* src/views/mainwindow.cpp */
 #include "mainwindow.h"
-#include "./ui_mainwindow.h"
+#include "ui_mainwindow.h"
 #include <QMessageBox>
 #include <QInputDialog>
 
