@@ -9,6 +9,7 @@
 #include <QMap>
 
 //这些数据载体在各层之间流转，保证解耦
+//View 拿到的只是纯粹的数据快照，任何在 UI 层面的误操作都不会直接污染底层的核心数据集
 struct MemberInfoModel {
     QString levelName;  // 等级名称（如：普通会员、黄金会员、钻石VIP会员）
     double discount;    // 折扣率（如：0.95、0.90、0.85）

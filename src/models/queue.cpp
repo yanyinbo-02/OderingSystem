@@ -31,6 +31,7 @@ void QueueManager::initMockQueue(QList<QueueNode> &queue, const QString &prefix)
     }
 }
 
+//当系统主界面第一次初始化调用此函数渲染时，直接将数据呈现
 QList<QueueNode> QueueManager::getQueue(int type) {
     // 根据类型选择对应的队列和首次调用标记
     QList<QueueNode> *targetQueue;
@@ -53,6 +54,7 @@ QList<QueueNode> QueueManager::getQueue(int type) {
         // 非首次调用时，每次移除前两个客户（模拟他们已完成业务离开）
         for (int i = 0; i < 2; ++i) {
             if (!targetQueue->isEmpty()) {
+                //强行强行抹除当前队列最前面的 2 位伪顾客
                 targetQueue->removeFirst();
             }
         }

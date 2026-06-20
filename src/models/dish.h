@@ -10,7 +10,6 @@ class DishManager {
 public:
     static DishManager& instance();
     
-    // 【关键适配修正】提供静态桥接函数，直接适配 system_engine.cpp 内部的底层调用
     static QList<DishModel> getFixedDishes() {
         return instance().getDishes();
     }
