@@ -322,11 +322,12 @@ void MainWindow::refreshQueueUI()
 }
 
 void MainWindow::on_btnRefreshQueue_clicked() { refreshQueueUI(); }
+
 void MainWindow::on_btnJoinQueue_clicked() {
-    bool ok;
-    QString id = QInputDialog::getText(this, "快捷排队", "输入凭证标识:", QLineEdit::Normal, "", &ok);
-    if (ok && !id.trimmed().isEmpty()) m_engine->customerJoinQueue(id.trimmed(), ui->tabWidgetQueueType->currentIndex());
+    // 调用引擎的商家出餐接口，直接消减“现场取餐”队列
+    m_engine->serveDish();
 }
+
 void MainWindow::on_btnCallNext_clicked() { m_engine->callNextCustomer(ui->tabWidgetQueueType->currentIndex()); }
 
 MainWindow::~MainWindow() { delete ui; }

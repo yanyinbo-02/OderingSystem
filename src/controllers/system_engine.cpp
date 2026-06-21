@@ -172,3 +172,10 @@ void SystemEngine::callNextCustomer(int type) {
     QueueManager::instance().callNext(type);
     emit queueStatusChanged();
 }
+
+void SystemEngine::serveDish() {
+    // 强制操作取餐队列 (type 1)
+    QueueManager::instance().callNext(1);
+    // 发送队列改变信号，驱动 UI 刷新
+    emit queueStatusChanged();
+}

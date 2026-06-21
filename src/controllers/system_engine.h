@@ -62,6 +62,7 @@ public:
     QList<QueueNode> getQueueData(int type);  //获取排队信息
     void customerJoinQueue(const QString &id, int type);  //加入排队
     void callNextCustomer(int type);  //传唤客户
+    void serveDish();                 // 商家出餐（移除取餐队列头部）
     MemberInfoModel getMemberInfo(const QString &memberId);
 
     //signals:：定义了引擎对外广播的事件
