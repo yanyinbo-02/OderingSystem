@@ -3,6 +3,7 @@
 #include "ui_mainwindow.h"
 #include <QMessageBox>
 #include <QInputDialog>
+#include <QHeaderView>
 
 MainWindow::MainWindow(QWidget *parent)
 //初始化列表。首先调用基类构造函数；接着在堆内存中实例化
@@ -12,6 +13,10 @@ MainWindow::MainWindow(QWidget *parent)
 {
     //将当前 MainWindow 实例的指针传递给 UI 组合对象，在内部完成所有控件的创建、层级挂载和基础几何布局的初始化。
     ui->setupUi(this);
+
+    // 新增：注入 Material Design 全局主题样式（纯视觉层，不影响任何业务逻辑与信号槽绑定）
+    applyMaterialTheme();
+
     //在堆上创建控制器实例
     m_engine = new SystemEngine(this);
 
@@ -66,6 +71,329 @@ void MainWindow::initUIStyleAndConnections()
     ui->comboRatingScore->addItem("⭐⭐⭐ 3分 一般", 3);
     ui->comboRatingScore->addItem("⭐⭐ 2分 不满意", 2);
     ui->comboRatingScore->addItem("⭐ 1分 非常不满意", 1);
+
+    // ====== 新增：表格视觉细节优化（隐藏纵向序号表头 + 加大行高 + 交替行底色 + 末列自适应拉伸）======
+    ui->tableWidgetMenu->verticalHeader()->setVisible(false);
+    ui->tableWidgetMenu->verticalHeader()->setDefaultSectionSize(34);
+    ui->tableWidgetMenu->setAlternatingRowColors(true);
+    ui->tableWidgetMenu->horizontalHeader()->setStretchLastSection(true);
+
+    ui->tableWidgetCart->verticalHeader()->setVisible(false);
+    ui->tableWidgetCart->verticalHeader()->setDefaultSectionSize(32);
+    ui->tableWidgetCart->setAlternatingRowColors(true);
+    ui->tableWidgetCart->horizontalHeader()->setStretchLastSection(true);
+
+    ui->tableWidgetQueue->verticalHeader()->setVisible(false);
+    ui->tableWidgetQueue->verticalHeader()->setDefaultSectionSize(32);
+    ui->tableWidgetQueue->setAlternatingRowColors(true);
+    ui->tableWidgetQueue->horizontalHeader()->setStretchLastSection(true);
+
+    // 列表项间距提升，配合 QSS 的 padding 形成呼吸感，提升信息密度的舒适度
+    ui->listWidgetHistory->setSpacing(2);
+    ui->listWidgetComments->setSpacing(2);
+}
+
+// =========================================================================
+// 新增函数：applyMaterialTheme()
+// 职责：集中下发全局 QSS 样式表，实现 Material Design 风格的视觉升级
+// 设计原则：
+//   1. 不改变任何控件的 objectName / 布局层级 / 信号槽绑定
+//   2. 通过 #objectName 选择器精准覆盖个别控件（如几个主按钮的强调色）
+//   3. 通用控件（QGroupBox/QTableWidget/QLineEdit等）走统一规则，保证全局一致性
+//   4. Qt Widgets 不支持 box-shadow，用「浅色描边 + 留白」模拟卡片悬浮感
+// =========================================================================
+void MainWindow::applyMaterialTheme()
+{
+    const QString qss = R"(
+        /* ============ 全局基础：窗体背景与字体 ============ */
+        QMainWindow, QWidget#centralwidget {
+            background-color: #F5F6FA;
+        }
+        QWidget {
+            font-family: "Microsoft YaHei UI", "Microsoft YaHei", "Segoe UI";
+            font-size: 13px;
+            color: #212121;
+        }
+
+        /* ============ 侧边栏导航：从默认 List 升级为图标式分段导航 ============ */
+        QListWidget#sidebarNav {
+            background-color: #1E2A3A;
+            border: none;
+            border-radius: 12px;
+            padding: 12px 6px;
+            outline: none;
+        }
+        QListWidget#sidebarNav::item {
+            color: #B0BEC5;
+            padding: 14px 10px;
+            margin: 4px 2px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        QListWidget#sidebarNav::item:hover {
+            background-color: #2C3E50;
+            color: #FFFFFF;
+        }
+        QListWidget#sidebarNav::item:selected {
+            background-color: #1976D2;
+            color: #FFFFFF;
+            font-weight: bold;
+        }
+
+        /* ============ 分组卡片 QGroupBox：模拟悬浮卡片 ============ */
+        QGroupBox {
+            background-color: #FFFFFF;
+            border: 1px solid #E0E0E0;
+            border-radius: 12px;
+            margin-top: 14px;
+            padding: 16px 10px 10px 10px;
+            font-weight: bold;
+            font-size: 14px;
+            color: #37474F;
+        }
+        QGroupBox::title {
+            subcontrol-origin: margin;
+            subcontrol-position: top left;
+            left: 14px;
+            top: -4px;
+            padding: 2px 10px;
+            background-color: #1976D2;
+            color: #FFFFFF;
+            border-radius: 6px;
+        }
+
+        /* ============ 表格通用样式：电子菜单/购物车/排队表 ============ */
+        QTableWidget {
+            background-color: #FFFFFF;
+            alternate-background-color: #F8F9FB;
+            gridline-color: #ECEFF1;
+            border: 1px solid #E0E0E0;
+            border-radius: 8px;
+            selection-background-color: #E3F2FD;
+            selection-color: #0D47A1;
+            font-size: 13px;
+        }
+        QTableWidget::item {
+            padding: 6px 4px;
+            border-bottom: 1px solid #F0F0F0;
+        }
+        QHeaderView::section {
+            background-color: #ECEFF1;
+            color: #37474F;
+            font-weight: bold;
+            padding: 8px 4px;
+            border: none;
+            border-right: 1px solid #E0E0E0;
+            border-bottom: 2px solid #1976D2;
+        }
+        QTableCornerButton::section {
+            background-color: #ECEFF1;
+            border: none;
+        }
+
+        /* ============ 列表 QListWidget：历史记录 / 评价看板 ============ */
+        QListWidget {
+            background-color: #FFFFFF;
+            border: 1px solid #E0E0E0;
+            border-radius: 8px;
+            padding: 4px;
+            outline: none;
+        }
+        QListWidget::item {
+            padding: 10px 8px;
+            border-bottom: 1px solid #F0F0F0;
+            border-radius: 4px;
+        }
+        QListWidget::item:hover {
+            background-color: #F5F9FF;
+        }
+        QListWidget::item:selected {
+            background-color: #E3F2FD;
+            color: #0D47A1;
+        }
+
+        /* ============ 通用按钮基础态（个性化主按钮在下方用 #id 覆盖） ============ */
+        QPushButton {
+            background-color: #ECEFF1;
+            color: #37474F;
+            border: none;
+            border-radius: 8px;
+            padding: 8px 14px;
+            font-weight: 600;
+        }
+        QPushButton:hover {
+            background-color: #CFD8DC;
+        }
+        QPushButton:pressed {
+            background-color: #B0BEC5;
+        }
+
+        /* ---- 加入购物车：绿色 Success ---- */
+        QPushButton#btnAddToCart {
+            background-color: #43A047;
+            color: #FFFFFF;
+            min-height: 34px;
+            font-size: 14px;
+            border-radius: 10px;
+        }
+        QPushButton#btnAddToCart:hover { background-color: #388E3C; }
+        QPushButton#btnAddToCart:pressed { background-color: #2E7D32; }
+
+        /* ---- 确认付款：主色蓝，加大加粗，作为视觉焦点 ---- */
+        QPushButton#btnSubmitOrder {
+            background-color: #1976D2;
+            color: #FFFFFF;
+            min-height: 44px;
+            font-size: 15px;
+            border-radius: 10px;
+        }
+        QPushButton#btnSubmitOrder:hover { background-color: #1565C0; }
+        QPushButton#btnSubmitOrder:pressed { background-color: #0D47A1; }
+
+        /* ---- 评价类操作：橙色/紫色强调 ---- */
+        QPushButton#btnRateHistoryOrder {
+            background-color: #FB8C00;
+            color: #FFFFFF;
+            border-radius: 8px;
+        }
+        QPushButton#btnRateHistoryOrder:hover { background-color: #EF6C00; }
+
+        QPushButton#btnSubmitComment {
+            background-color: #7B1FA2;
+            color: #FFFFFF;
+            min-height: 32px;
+            border-radius: 8px;
+        }
+        QPushButton#btnSubmitComment:hover { background-color: #6A1B9A; }
+
+        /* ---- 历史克隆 / 刷新类：浅蓝中性操作 ---- */
+        QPushButton#copyHistoryOrder,
+        QPushButton#btnRefreshQueue {
+            background-color: #E3F2FD;
+            color: #1565C0;
+            border: 1px solid #90CAF9;
+            border-radius: 8px;
+        }
+        QPushButton#copyHistoryOrder:hover,
+        QPushButton#btnRefreshQueue:hover {
+            background-color: #BBDEFB;
+        }
+
+        /* ---- 商家出餐 / 叫号出队：餐饮场景暖色 ---- */
+        QPushButton#btnJoinQueue {
+            background-color: #FF7043;
+            color: #FFFFFF;
+            min-height: 36px;
+            border-radius: 9px;
+            font-size: 14px;
+        }
+        QPushButton#btnJoinQueue:hover { background-color: #F4511E; }
+
+        QPushButton#btnCallNext {
+            background-color: #26A69A;
+            color: #FFFFFF;
+            min-height: 36px;
+            border-radius: 9px;
+            font-size: 14px;
+        }
+        QPushButton#btnCallNext:hover { background-color: #00897B; }
+
+        /* ============ 输入框 / 下拉框 / 文本编辑区 ============ */
+        QLineEdit, QTextEdit {
+            background-color: #FFFFFF;
+            border: 1.5px solid #CFD8DC;
+            border-radius: 8px;
+            padding: 8px 10px;
+            font-size: 13px;
+            selection-background-color: #BBDEFB;
+        }
+        QLineEdit:focus, QTextEdit:focus {
+            border: 1.5px solid #1976D2;
+            background-color: #FAFCFF;
+        }
+
+        QComboBox {
+            background-color: #FFFFFF;
+            border: 1.5px solid #CFD8DC;
+            border-radius: 8px;
+            padding: 6px 10px;
+            min-height: 26px;
+        }
+        QComboBox:hover { border: 1.5px solid #90A4AE; }
+        QComboBox:focus { border: 1.5px solid #1976D2; }
+        QComboBox::drop-down {
+            border: none;
+            width: 24px;
+        }
+        QComboBox QAbstractItemView {
+            background-color: #FFFFFF;
+            border: 1px solid #E0E0E0;
+            border-radius: 6px;
+            selection-background-color: #E3F2FD;
+            selection-color: #0D47A1;
+            outline: none;
+        }
+
+        /* ============ Tab 页签：排队看板的预约/取餐切换 ============ */
+        QTabWidget::pane {
+            border: 1px solid #E0E0E0;
+            border-radius: 8px;
+            background-color: #FFFFFF;
+            top: -1px;
+        }
+        QTabBar::tab {
+            background-color: #ECEFF1;
+            color: #607D8B;
+            padding: 8px 20px;
+            margin-right: 4px;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+            font-weight: 600;
+        }
+        QTabBar::tab:selected {
+            background-color: #1976D2;
+            color: #FFFFFF;
+        }
+        QTabBar::tab:hover:!selected {
+            background-color: #CFD8DC;
+        }
+
+        /* ============ 标签文字：状态提示类 QLabel 字号统一加大 ============ */
+        QLabel#lblFinalPrice {
+            font-size: 17px;
+        }
+        QLabel#lblQueueCount {
+            font-size: 15px;
+            color: #1976D2;
+        }
+
+        /* ============ 分割线 QSplitter：历史与评价页的左右分栏 ============ */
+        QSplitter::handle {
+            background-color: #E0E0E0;
+            width: 2px;
+        }
+
+        /* ============ 滚动条：细线条扁平风格 ============ */
+        QScrollBar:vertical {
+            background: transparent;
+            width: 10px;
+            margin: 2px;
+        }
+        QScrollBar::handle:vertical {
+            background: #CFD8DC;
+            border-radius: 5px;
+            min-height: 24px;
+        }
+        QScrollBar::handle:vertical:hover {
+            background: #B0BEC5;
+        }
+        QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
+            height: 0px;
+        }
+    )";
+
+    this->setStyleSheet(qss);
 }
 
 //当左侧侧边栏导航列表（sidebarNav）的当前行发生变化时，该函数被触发。

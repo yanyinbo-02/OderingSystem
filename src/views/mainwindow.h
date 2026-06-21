@@ -64,6 +64,7 @@ private:
     QString m_pendingRateOrderId;
 
     void initUIStyleAndConnections();
+    void applyMaterialTheme();      // 新增：注入 Material Design 全局 QSS 主题（纯视觉层，不涉及业务逻辑）
     void loadHistoryOrders();
     double getBasePriceOfDish(const QString &dishName);
 };
