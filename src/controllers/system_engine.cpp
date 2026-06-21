@@ -133,8 +133,8 @@ MemberInfoModel SystemEngine::getMemberInfo(const QString &memberId) {
         return info;
     }
 
-    // 调用底层单例获取真实的积分与折扣，保证业务逻辑的高内聚
-    info.points = MemberManager::instance().getPoints();
+    // 调用底层单例获取真实的积分，必须把当前输入的 memberId 传入
+    info.points = MemberManager::instance().getPoints(memberId);
     info.discount = MemberManager::instance().getDiscount(memberId);
 
     // 严格对齐底层的阶梯式优惠折扣规则进行文本映射
