@@ -182,11 +182,25 @@
              <widget class="QListWidget" name="listWidgetHistory"/>
             </item>
             <item>
-             <widget class="QPushButton" name="copyHistoryOrder">
-              <property name="text">
-               <string>🔄 复制该订单再来一单</string>
-              </property>
-             </widget>
+             <layout class="QHBoxLayout" name="historyButtonsLayout">
+              <item>
+               <widget class="QPushButton" name="copyHistoryOrder">
+                <property name="text">
+                 <string>🔄 复制该订单再来一单</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="btnRateHistoryOrder">
+                <property name="styleSheet">
+                 <string>background-color: #FF9800; color: white; font-weight: bold;</string>
+                </property>
+                <property name="text">
+                 <string>⭐ 评价该订单</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
             </item>
            </layout>
           </widget>
@@ -200,6 +214,59 @@
             </item>
             <item>
              <widget class="QListWidget" name="listWidgetComments"/>
+            </item>
+            <item>
+             <widget class="QFrame" name="frameSubmitComment">
+              <property name="frameShape">
+               <enum>QFrame::StyledPanel</enum>
+              </property>
+              <layout class="QVBoxLayout" name="submitCommentLayout">
+               <item>
+                <widget class="QLabel" name="labelSubmitCommentPrompt">
+                 <property name="text">
+                  <string>📝 选中左侧历史订单后，在此提交您的评价：</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <layout class="QHBoxLayout" name="ratingRowLayout">
+                 <item>
+                  <widget class="QLabel" name="labelRatingPrompt">
+                   <property name="text">
+                    <string>评分:</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QComboBox" name="comboRatingScore"/>
+                 </item>
+                </layout>
+               </item>
+               <item>
+                <widget class="QTextEdit" name="textEditCommentContent">
+                 <property name="placeholderText">
+                  <string>请输入您的评价内容…</string>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>16777215</width>
+                   <height>70</height>
+                  </size>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QPushButton" name="btnSubmitComment">
+                 <property name="styleSheet">
+                  <string>background-color: #7B1FA2; color: white; font-weight: bold; height: 30px;</string>
+                 </property>
+                 <property name="text">
+                  <string>✅ 提交评价</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
             </item>
            </layout>
           </widget>

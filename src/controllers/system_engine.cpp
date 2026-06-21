@@ -4,6 +4,7 @@
 #include "../models/member.h"
 #include "../models/order.h"
 #include "../models/queue.h"
+#include "../models/comment.h" // 新增引入
 //提供排序功能
 #include <algorithm>
 
@@ -91,37 +92,22 @@ bool SystemEngine::createGroupedOrder(const QMap<QString, int> &cart, const QStr
     return true;
 }
 
-//模拟生成一组餐饮系统的评价数据，并根据前端传入的筛选索引（评分或时间）进行动态排序
+//评价数据的统一出口：直接委派给 CommentManager 单例，
+//该单例内部融合了硬编码的演示性评论与用户下单后主动提交的真实动态评价，
+//并按照传入的 index（0-评分优先，1-时间优先）完成排序
 QList<CommentModel> SystemEngine::getSortedComments(int index) {
-    // 局部变量声明
-    //初始化一个空的 QList 容器，命名为 comments，用于临时存放和处理接下来的模拟评论数据
-    QList<CommentModel> comments;
-    //获取当前操作系统的绝对日期和时间，作为模拟历史评论发表时间的计算基准
-    QDateTime now = QDateTime::currentDateTime();
-    //硬编码了五个不同评论
-    //comments.append(...)：调用 QList 的成员函数，将一个新元素追加到列表末尾。
-    //列表初始化语法，直接构造 CommentModel 结构体实例（包含三个字段：评分、内容、时间）。
-    //now.addDays(-2) / now.addSecs(...)：调用 QDateTime 的成员函数。通过传入负数，实现对基准时间向前推算
-    comments.append(CommentModel{5, "招牌红烧肉肥而不腻", now.addDays(-2)});
-    comments.append(CommentModel{4, "服务态度很好。", now.addDays(-1)});
-    comments.append(CommentModel{5, "每次来必点宫保鸡丁", now.addSecs(-5 * 3600)});
-    comments.append(CommentModel{3, "排队的人稍微有点多。", now.addSecs(-2 * 3600)});
-    comments.append(CommentModel{2, "鱼肉稍微有点腥", now.addSecs(-30 * 60)});
+    return CommentManager::instance().getSortedComments(index);
+}
 
-    // 排序逻辑：0-按评分从高到低，1-按留言时间先后
-    //引入自标准库 <algorithm> 的高效排序算法
-    if (index == 0) {
-        //调用 C++ 标准库的高效快速排序算法。第三个参数传入了一个 Lambda 表达式（匿名函数）
-        std::sort(comments.begin(), comments.end(), [](const CommentModel &a, const CommentModel &b) {
-            return a.score > b.score;
-        });
-    } else if (index == 1) {
-        std::sort(comments.begin(), comments.end(), [](const CommentModel &a, const CommentModel &b) {
-            return a.time < b.time;
-        });
+//用户提交一条新评价。targetTag 通常传入订单号（也可传菜品名，视前端弹窗设计而定），
+//memberId 取自当前登录态（散客可为空），score 与 content 来自评价弹窗的输入控件
+bool SystemEngine::addComment(const QString &targetTag, const QString &memberId, int score, const QString &content) {
+    bool ok = CommentManager::instance().addComment(targetTag, memberId, score, content);
+    if (ok) {
+        // 广播评价数据变更信号，驱动 UI 端的评价看板自动刷新
+        emit commentDataChanged();
     }
-    //返回已经排好序的评论数据列表
-    return comments;
+    return ok;
 }
 
 MemberInfoModel SystemEngine::getMemberInfo(const QString &memberId) {

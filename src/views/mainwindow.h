@@ -38,6 +38,11 @@ private slots:
 
     // 评价检索与排序
     void on_comboCommentSort_currentIndexChanged(int index);
+    void refreshCommentsUI();              // 新增：统一的评价看板刷新函数（供信号槽自动调用）
+
+    // 需求3：下单后主动评分评论
+    void on_btnRateHistoryOrder_clicked();  // 历史订单列表中点击“评价该订单”
+    void on_btnSubmitComment_clicked();     // 提交评价弹窗中的“提交评价”按钮
     
     // 历史克隆重现
     void on_copyHistoryOrder_clicked();
@@ -54,6 +59,9 @@ private:
 
     // 核心购物车缓冲：键=菜品名称，值=购买数量
     QMap<QString, int> m_cart;
+
+    // 当前用户点击“评价该订单”后锁定的目标订单号，空字符串代表尚未选定评价对象
+    QString m_pendingRateOrderId;
 
     void initUIStyleAndConnections();
     void loadHistoryOrders();

@@ -26,6 +26,7 @@ set(SRC_FILES
     src/models/member.cpp
     src/models/order.cpp
     src/models/queue.cpp
+    src/models/comment.cpp
 )
 
 set(INC_FILES
@@ -35,6 +36,7 @@ set(INC_FILES
     src/models/member.h
     src/models/order.h
     src/models/queue.h
+    src/models/comment.h
 )
 
 set(UI_FILES

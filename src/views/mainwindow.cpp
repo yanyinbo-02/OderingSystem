@@ -23,6 +23,7 @@ MainWindow::MainWindow(QWidget *parent)
     refreshDishMenuUI();
     refreshQueueUI();
     loadHistoryOrders();
+    refreshCommentsUI();
 }
 
 void MainWindow::initUIStyleAndConnections()
@@ -32,6 +33,8 @@ void MainWindow::initUIStyleAndConnections()
     connect(m_engine, &SystemEngine::queueStatusChanged, this, &MainWindow::refreshQueueUI);
     //同理，当后台菜单数据变动时（menuDataChanged），自动重新渲染电子菜单。
     connect(m_engine, &SystemEngine::menuDataChanged, this, &MainWindow::refreshDishMenuUI);
+    //新增：当后台评价数据变动时（commentDataChanged），自动重新渲染评价看板。
+    connect(m_engine, &SystemEngine::commentDataChanged, this, &MainWindow::refreshCommentsUI);
 
     // 配置主电子菜单
     //为菜单网格显式开辟 5 列空间
@@ -56,6 +59,13 @@ void MainWindow::initUIStyleAndConnections()
     //向排序下拉复选框追加可选项
     ui->comboCommentSort->addItem("🔥 按评分由高到低", 0);
     ui->comboCommentSort->addItem("⏰ 按留言时间先后", 1);
+
+    //向评分选择下拉框追加 1~5 星可选项（用于用户提交新评价时选择分数）
+    ui->comboRatingScore->addItem("⭐⭐⭐⭐⭐ 5分 非常满意", 5);
+    ui->comboRatingScore->addItem("⭐⭐⭐⭐ 4分 满意", 4);
+    ui->comboRatingScore->addItem("⭐⭐⭐ 3分 一般", 3);
+    ui->comboRatingScore->addItem("⭐⭐ 2分 不满意", 2);
+    ui->comboRatingScore->addItem("⭐ 1分 非常不满意", 1);
 }
 
 //当左侧侧边栏导航列表（sidebarNav）的当前行发生变化时，该函数被触发。
@@ -137,30 +147,28 @@ void MainWindow::on_tableWidgetCart_cellDoubleClicked(int row, int column)
     recalculateCartPrices();
 }
 
-// 登录后自动动态切换并更新当前会员级别显示
-/* src/views/mainwindow.cpp */
 
-// 登录后自动动态切换并更新当前会员级别显示（重写后的高性能高可读版本）
+// 登录后自动动态切换并更新当前会员级别显示
 void MainWindow::on_lineEditMemberId_textChanged(const QString &text)
 {
     QString mid = text.trimmed();
 
-    // 1. 遵循 MVC 原则，直接向控制层索要统一格式的会员状态数据
+    // 直接向控制层索要统一格式的会员状态数据
     MemberInfoModel member = m_engine->getMemberInfo(mid);
 
-    // 2. 根据业务状态进行纯粹的界面渲染（消除黑盒盲测与无效死代码）
+    // 根据业务状态进行纯粹的界面渲染
     if (mid.isEmpty()) {
         ui->lblMemberLevel->setText("当前身份: 散客顾客 (无优惠)");
         ui->lblMemberLevel->setStyleSheet("color: #E65100; font-weight: bold;");
     } else {
-        // 动态展示真实的等级、更精确的分位折扣和积分状态
+        // 动态展示真实的等级、精确的分位折扣和积分状态
         QString statusText = QString("验证成功：%1 (享有 %2 折优惠 | 当前积分: %3)")
                              .arg(member.levelName)
                              .arg(member.discount * 10, 0, 'f', 1) // 转换为例如 "8.5" 折
                              .arg(member.points);
         ui->lblMemberLevel->setText(statusText);
 
-        // 3. 动态样式驱动：根据具体的等级渲染对应的视觉主题（消除魔法硬编码）
+        // 动态样式驱动：根据具体的等级渲染对应的视觉主题
         if (member.levelName == "钻石VIP会员") {
             ui->lblMemberLevel->setStyleSheet("color: #7B1FA2; font-weight: bold;"); // 尊贵紫
         } else if (member.levelName == "黄金会员") {
@@ -170,7 +178,7 @@ void MainWindow::on_lineEditMemberId_textChanged(const QString &text)
         }
     }
 
-    // 4. 强制驱动购物车级联更新（用户输入卡号时，购物车内的“折后单品小计”及“总应付金额”将实时无感刷新）
+    // 强制驱动购物车级联更新（用户输入卡号时，购物车内的“折后单品小计”及“总应付金额”将实时无感刷新）
     recalculateCartPrices(); 
 }
 
@@ -234,30 +242,67 @@ void MainWindow::on_btnSubmitOrder_clicked()
     int defaultQueueTab = 1; // 默认加入“现场取餐进程”
     m_engine->customerJoinQueue(queueIdentity, defaultQueueTab);
 
-    QMessageBox::information(this, "结账并完成排队", 
-        QString("付款交易成功！\n系统检测到您的出餐类型，已为您分配至【现场取餐】队列。\n识别号：%1").arg(queueIdentity));
+    // 需求3联动：下单后立即引导评论环节。
+    // OrderManager 内部以自增ID顺序 append，故刚生成的订单必然位于历史列表末尾。
+    QList<OrderModel> latestHistory = m_engine->getHistoryOrders();
+    QString newOrderId = latestHistory.isEmpty() ? "" : latestHistory.last().orderId;
+
+    QMessageBox::StandardButton choice = QMessageBox::information(
+        this, "结账并完成排队",
+        QString("付款交易成功！\n系统检测到您的出餐类型，已为您分配至【现场取餐】队列。\n识别号：%1\n\n订单号：%2\n是否现在就对本次消费进行评价？")
+            .arg(queueIdentity).arg(newOrderId),
+        QMessageBox::Yes | QMessageBox::No, QMessageBox::Yes);
 
     // 清洗本地购物车缓冲区并强制更新
     m_cart.clear();
     recalculateCartPrices();
     loadHistoryOrders();
 
-    // 路由切票：自动引导切换至排队界面看板
-    ui->tabWidgetQueueType->setCurrentIndex(defaultQueueTab);
-    ui->sidebarNav->setCurrentRow(2); // 选中“排队看板”页面
+    if (choice == QMessageBox::Yes && !newOrderId.isEmpty()) {
+        // 用户选择立即评价：锁定订单号，直接跳转到“历史与评价”页面的评价输入区
+        m_pendingRateOrderId = newOrderId;
+        ui->comboRatingScore->setCurrentIndex(0);
+        ui->textEditCommentContent->clear();
+        ui->sidebarNav->setCurrentRow(1);      // 切换左侧导航至：📜 历史与评价
+        ui->stackedWidget->setCurrentIndex(1);
+        ui->textEditCommentContent->setFocus();
+    } else {
+        // 用户选择稍后评价：维持原有逻辑，路由切票至排队看板
+        ui->tabWidgetQueueType->setCurrentIndex(defaultQueueTab);
+        ui->sidebarNav->setCurrentRow(2); // 选中“排队看板”页面
+    }
 }
 
 // =========================================================================
-// 其他衍生模块（评价、克隆、队列消解）
+// 其他衍生模块（评价排序检索、订单克隆、队列消解）
 // =========================================================================
 void MainWindow::on_comboCommentSort_currentIndexChanged(int index)
 {
-    if (index < 0) return;
+    Q_UNUSED(index);
+    // 排序方式发生切换时，统一交由 refreshCommentsUI() 重新拉取并渲染
+    refreshCommentsUI();
+}
+
+//统一的评价看板渲染函数：既供排序下拉框切换时调用，也供 commentDataChanged 信号自动触发，
+//确保“用户刚提交完评价”与“切换排序方式”两条路径渲染的是同一套最新数据，杜绝界面不同步
+void MainWindow::refreshCommentsUI()
+{
+    int sortIndex = ui->comboCommentSort->currentData().isValid()
+                         ? ui->comboCommentSort->currentData().toInt()
+                         : ui->comboCommentSort->currentIndex();
+    if (sortIndex < 0) sortIndex = 0;
+
     ui->listWidgetComments->clear();
-    QList<CommentModel> sortedComments = m_engine->getSortedComments(index);
+    QList<CommentModel> sortedComments = m_engine->getSortedComments(sortIndex);
     for (const auto &comment : sortedComments) {
         QString stars = QString("★").repeated(comment.score) + QString("☆").repeated(5 - comment.score);
-        ui->listWidgetComments->addItem(QString("[%1] %2\n⏱ %3").arg(stars).arg(comment.content).arg(comment.time.toString("yyyy-MM-dd")));
+        // 若评价携带了 targetTag（即用户自主提交的真实订单评价），额外标注来源，便于与系统演示数据区分
+        QString tagSuffix = comment.targetTag.isEmpty() ? "" : QString(" [订单:%1]").arg(comment.targetTag);
+        ui->listWidgetComments->addItem(QString("[%1] %2%3\n⏱ %4")
+                                         .arg(stars)
+                                         .arg(comment.content)
+                                         .arg(tagSuffix)
+                                         .arg(comment.time.toString("yyyy-MM-dd hh:mm")));
     }
 }
 
@@ -301,6 +346,73 @@ void MainWindow::on_copyHistoryOrder_clicked()
     //自动跳入菜单界面，方便用户继续加菜或直接结账
     ui->sidebarNav->setCurrentRow(0);     // 切换左侧导航至：🛒 点餐大厅
     ui->stackedWidget->setCurrentIndex(0); // 联动的右侧页面切回点餐主画布
+}
+
+// =========================================================================
+// 需求3：下单后主动评分评论
+// =========================================================================
+
+//用户在历史订单列表中点击“⭐ 评价该订单”，锁定本次评价的目标订单号，
+//并将焦点引导至评价输入区，提示用户填写评分与正文
+void MainWindow::on_btnRateHistoryOrder_clicked()
+{
+    int currentRow = ui->listWidgetHistory->currentRow();
+    if (currentRow < 0) {
+        QMessageBox::warning(this, "评价失败", "请先在左侧历史消费网格中点击选择一条想要评价的订单记录。");
+        return;
+    }
+
+    QList<OrderModel> history = m_engine->getHistoryOrders();
+    if (currentRow >= history.size()) return;
+
+    const OrderModel &selectedOrder = history[currentRow];
+    // 锁定本次待评价的订单号，供下方“提交评价”按钮在实际写入时使用
+    m_pendingRateOrderId = selectedOrder.orderId;
+
+    // 默认回填一个 5 分好评，降低用户操作成本；用户仍可自行调整评分与文案
+    ui->comboRatingScore->setCurrentIndex(0);
+    ui->textEditCommentContent->clear();
+    ui->textEditCommentContent->setFocus();
+
+    QMessageBox::information(this, "选定评价对象",
+        QString("已锁定订单【%1】作为本次评价对象。\n请在右侧评价区填写评分与内容后点击“✅ 提交评价”。")
+        .arg(selectedOrder.orderId));
+}
+
+//用户填好评分与评论正文后点击“✅ 提交评价”，将评价真正写入底层 CommentManager
+void MainWindow::on_btnSubmitComment_clicked()
+{
+    if (m_pendingRateOrderId.isEmpty()) {
+        QMessageBox::warning(this, "提交失败", "请先在左侧历史订单中点击“⭐ 评价该订单”以选定评价对象。");
+        return;
+    }
+
+    QString content = ui->textEditCommentContent->toPlainText().trimmed();
+    if (content.isEmpty()) {
+        QMessageBox::warning(this, "提交失败", "评价内容不能为空，请填写您的真实感受后再提交。");
+        return;
+    }
+
+    int score = ui->comboRatingScore->currentData().isValid()
+                    ? ui->comboRatingScore->currentData().toInt()
+                    : 5;
+    QString mid = ui->lineEditMemberId->text().trimmed(); // 散客可为空，与全局会员识别机制保持一致
+
+    // 转发至控制层，最终落地到 CommentManager 的动态评价列表
+    bool ok = m_engine->addComment(m_pendingRateOrderId, mid, score, content);
+
+    if (ok) {
+        QMessageBox::information(this, "评价成功",
+            QString("感谢您对订单【%1】的评价！您的反馈已成功录入评价看板。").arg(m_pendingRateOrderId));
+        // 评价完成后清空锁定态与输入框，避免误触导致重复提交同一订单
+        m_pendingRateOrderId.clear();
+        ui->textEditCommentContent->clear();
+        // 自动跳转到“历史与评价”页签的评价看板，让用户立即看到自己刚提交的评价
+        ui->sidebarNav->setCurrentRow(1);
+        ui->stackedWidget->setCurrentIndex(1);
+    } else {
+        QMessageBox::warning(this, "提交失败", "评价提交未成功，请稍后重试。");
+    }
 }
 
 void MainWindow::refreshQueueUI()

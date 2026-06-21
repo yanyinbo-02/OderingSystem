@@ -27,6 +27,8 @@ struct CommentModel {
     int score;  //评分
     QString content;  //评价正文
     QDateTime time;   //评价发表时间
+    QString targetTag;  //评价对象标识（菜品名 或 订单号），硬编码数据此字段为空
+    QString memberId;   //评价人会员号，硬编码数据此字段为空（代表系统演示数据）
 }; //评论模型
 
 struct OrderItem {
@@ -58,6 +60,7 @@ public:
     double calculatePrice(const QString &dishName, const QString &memberId);  //价格计算
     bool createGroupedOrder(const QMap<QString, int> &cart, const QString &memberId); //批量提交购物车下单接口
     QList<CommentModel> getSortedComments(int index); //评价排序
+    bool addComment(const QString &targetTag, const QString &memberId, int score, const QString &content); //用户提交新评价
     QList<OrderModel> getHistoryOrders(); //获取历史订单
     QList<QueueNode> getQueueData(int type);  //获取排队信息
     void customerJoinQueue(const QString &id, int type);  //加入排队
@@ -69,6 +72,7 @@ public:
 signals:
     void queueStatusChanged();  //队列状态改变信号
     void menuDataChanged();  //菜单订单数据改变信号
+    void commentDataChanged();  //评价数据改变信号
 };
 
 #endif // SYSTEM_ENGINE_H
